@@ -1805,8 +1805,8 @@ public abstract class SunToolkit extends Toolkit
         if (useSystemAAFontSettings()) {
              Toolkit tk = Toolkit.getDefaultToolkit();
              if (tk instanceof SunToolkit) {
-                 Object map = ((SunToolkit)tk).getDesktopAAHints();
-                 return (RenderingHints)map;
+                 RenderingHints map = ((SunToolkit)tk).getDesktopAAHints();
+                 return map;
              } else { /* Headless Toolkit */
                  return null;
              }
@@ -1883,6 +1883,11 @@ public abstract class SunToolkit extends Toolkit
         return false;
     }
 
+    /**
+     * Checks if the system is running Linux with the Wayland server.
+     *
+     * @return true if running on Wayland, false otherwise
+     */
     public boolean isRunningOnWayland() {
         return false;
     }
